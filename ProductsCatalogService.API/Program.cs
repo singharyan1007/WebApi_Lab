@@ -32,6 +32,21 @@ namespace ProductsCatalogService.API
 
             var app = builder.Build();
 
+            //Enabling the CORS policy
+
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin();       //This is done if you want uninterrupted calls -> Not restricting any clients
+
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+
+            });
+
+            // To allow only the few clients, we need to create a policy. And testing can only be done if there is a Javascript client
+
+
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

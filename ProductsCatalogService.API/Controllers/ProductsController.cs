@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.EntityFrameworkCore;
 using ProductsCatalogService.API.Model.Data;
 using ProductsCatalogService.API.Model.Entities;
 
@@ -23,11 +24,18 @@ namespace ProductsCatalogService.API.Controllers
         //Desin the endpoint uri
         //   .../api/products/
 
+        //[HttpGet]
+        //[EnableQuery]
+        //public IQueryable<Product> GiveMeAllProducts()
+        //{
+        //    return _db.Products.AsQueryable();  //.ToList()
+        //}
+
         [HttpGet]
         [EnableQuery]
-        public IQueryable<Product> GiveMeAllProducts()
+        public async Task<List<Product>> GiveMeAllProducts()
         {
-            return _db.Products.AsQueryable();  //.ToList()
+            return await _db.Products.ToListAsync();  //.ToList()
         }
 
         [HttpPost]
