@@ -1,0 +1,9 @@
+// use this file for testing and debugging web api end points
+
+GET https://localhost:44336/api/Products
+Accept: application/json
+
+###
+
+GET https://localhost:44336/api/Products?$select=ProductName
+Accept: application/json
